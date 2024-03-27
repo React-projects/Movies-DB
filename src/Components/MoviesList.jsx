@@ -1,5 +1,6 @@
 import { Row } from "react-bootstrap";
 import CardMovies from "./CardMovies";
+import PaginationComponent from "./partital/PaginationComponent";
 const MoviesList = ({ movies }) => {
   return (
     <Row className="mt-3">
@@ -10,6 +11,8 @@ const MoviesList = ({ movies }) => {
       ) : (
         <h3 className="text-center"> لا يوجد افلام ...............</h3>
       )}
+
+      <PaginationComponent/>
     </Row>
   );
 };

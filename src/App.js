@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import NavBar from "./Components/NavBar";
+import NavBar from "./Components/partital/NavBar";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import MoviesList from "./Components/MoviesList";

@@ -1,5 +1,5 @@
 import { Container, Col, Row } from "react-bootstrap";
-import logo from "../images/logo.png";
+import logo from "../../images/logo.png";
 const NavBar = ({ searchInput }) => {
   const resualtSearch = (word) => {
     searchInput(word);

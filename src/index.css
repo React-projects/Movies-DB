@@ -133,4 +133,11 @@ body {
   letter-spacing: 0;
   line-height: 49px;
 }
-
+.page-item:last-child .page-link,
+.page-item:first-child .page-link{
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
