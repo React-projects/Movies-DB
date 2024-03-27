@@ -1,5 +1,5 @@
 import { Container, Col, Row } from "react-bootstrap";
-// import logo from "./images/logo.png";
+import logo from "../images/logo.png";
 const NavBar = () => {
   return (
     <div className="nav-style w-100">
@@ -7,7 +7,7 @@ const NavBar = () => {
         <Row className="pt-2 ">
           <Col xs="2" lg="1">
             <a href="/">
-              <img className="logo" src="{logo}" alt="dfs" />
+              <img className="logo" src={logo} alt="Logo" />
             </a>
           </Col>
           <Col xs="10" lg="11" className=" d-flex align-items-center">
