@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import MoviesList from "./Components/MoviesList";
 
 function App() {
+  const [movies, setMovies] = useState([]);
   // TODO get all movies from Api
   const getAllMovies = async () => {
     const res = await axios.get(
@@ -14,7 +15,20 @@ function App() {
     setMovies(res.data.results);
   };
 
-  const [movies, setMovies] = useState([]);
+  // search movies
+  const searchInput = async (word) => {
+
+    if(word===''){
+      getAllMovies();
+
+
+    }else{
+    const res = await axios.get(
+      `https://api.themoviedb.org/3/search/movie?api_key=52ef927bbeb21980cd91386a29403c78&query=${word}&language=ar`
+    );
+    setMovies(res.data.results);}
+
+  };
 
   useEffect(() => {
     getAllMovies();
@@ -22,9 +36,9 @@ function App() {
   }, []);
   return (
     <div div className="font  color-body">
-      <NavBar />
+      <NavBar searchInput={searchInput}/>
       <Container>
-        <MoviesList movies={movies}  />
+        <MoviesList movies={movies} />
       </Container>
     </div>
   );

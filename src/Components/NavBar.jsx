@@ -1,6 +1,10 @@
 import { Container, Col, Row } from "react-bootstrap";
 import logo from "../images/logo.png";
-const NavBar = () => {
+const NavBar = ({ searchInput }) => {
+  const resualtSearch = (word) => {
+    searchInput(word);
+  };
+
   return (
     <div className="nav-style w-100">
       <Container>
@@ -13,7 +17,12 @@ const NavBar = () => {
           <Col xs="10" lg="11" className=" d-flex align-items-center">
             <div className="search  w-100">
               <i className="fa fa-search"></i>
-              <input type="text" className="form-control" placeholder="ابحث" />
+              <input
+                onChange={(e) => resualtSearch(e.target.value)}
+                type="text"
+                className="form-control"
+                placeholder="ابحث"
+              />
             </div>
           </Col>
         </Row>
