@@ -99,9 +99,11 @@ body {
   background-color: #f8f8f8;
 }
 .card-story {
-  height: 300px;
+  height: auto;
   border-radius: 20px;
   background-color: #f8f8f8;
+  margin-bottom: 40px;
+
 }
 .img-movie {
   height: 360px;
@@ -128,7 +130,7 @@ body {
 .card-text-title {
   color: #555555;
   font-family: Almarai;
-  font-size: 36px;
+  font-size: 25px;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 49px;
