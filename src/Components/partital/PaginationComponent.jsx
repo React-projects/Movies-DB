@@ -1,9 +1,11 @@
 import { Pagination } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 
-function PaginationComponent() {
-  const handlePageClick = () => {};
-  const pageCount = 900;
+function PaginationComponent({ getPage,pageCount }) {
+  const handlePageClick = (data) => {
+    getPage(data.selected + 1);
+  };
+
   return (
     <div>
       <ReactPaginate

@@ -6,6 +6,7 @@ import MoviesList from "./Components/MoviesList";
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
   // TODO get all movies from Api
   const getAllMovies = async () => {
     const res = await axios.get(
@@ -13,20 +14,29 @@ function App() {
     );
 
     setMovies(res.data.results);
+    setPageCount(res.data.total_pages)
   };
 
-  // search movies
+  // TODO search movies
   const searchInput = async (word) => {
-
-    if(word===''){
+    if (word === "") {
       getAllMovies();
+    } else {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/search/movie?api_key=52ef927bbeb21980cd91386a29403c78&query=${word}&language=ar`
+      );
+      setMovies(res.data.results);
+      setPageCount(res.data.total_pages)
 
-
-    }else{
+    }
+  };
+  // TODO get pages movies
+  const getPage = async (page) => {
     const res = await axios.get(
-      `https://api.themoviedb.org/3/search/movie?api_key=52ef927bbeb21980cd91386a29403c78&query=${word}&language=ar`
+      `https://api.themoviedb.org/3/movie/popular?api_key=52ef927bbeb21980cd91386a29403c78&language=ar&page=${page}`
     );
-    setMovies(res.data.results);}
+    setMovies(res.data.results);
+    setPageCount(res.data.total_pages)
 
   };
 
@@ -36,9 +46,9 @@ function App() {
   }, []);
   return (
     <div div className="font  color-body">
-      <NavBar searchInput={searchInput}/>
+      <NavBar searchInput={searchInput} />
       <Container>
-        <MoviesList movies={movies} />
+        <MoviesList movies={movies} getPage={getPage} pageCount={pageCount}  />
       </Container>
     </div>
   );

@@ -1,7 +1,7 @@
 import { Row } from "react-bootstrap";
 import CardMovies from "./CardMovies";
 import PaginationComponent from "./partital/PaginationComponent";
-const MoviesList = ({ movies }) => {
+const MoviesList = ({ movies,getPage ,pageCount}) => {
   return (
     <Row className="mt-3">
       {movies.length >= 1 ? (
@@ -12,7 +12,7 @@ const MoviesList = ({ movies }) => {
         <h3 className="text-center"> لا يوجد افلام ...............</h3>
       )}
 
-      <PaginationComponent/>
+      <PaginationComponent getPage={getPage} pageCount={pageCount}/>
     </Row>
   );
 };
