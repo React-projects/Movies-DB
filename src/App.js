@@ -3,6 +3,8 @@ import NavBar from "./Components/partital/NavBar";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import MoviesList from "./Components/MoviesList";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MoviesDetails from "./Components/MoviesDetails";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -14,7 +16,7 @@ function App() {
     );
 
     setMovies(res.data.results);
-    setPageCount(res.data.total_pages)
+    setPageCount(res.data.total_pages);
   };
 
   // TODO search movies
@@ -26,8 +28,7 @@ function App() {
         `https://api.themoviedb.org/3/search/movie?api_key=52ef927bbeb21980cd91386a29403c78&query=${word}&language=ar`
       );
       setMovies(res.data.results);
-      setPageCount(res.data.total_pages)
-
+      setPageCount(res.data.total_pages);
     }
   };
   // TODO get pages movies
@@ -36,8 +37,7 @@ function App() {
       `https://api.themoviedb.org/3/movie/popular?api_key=52ef927bbeb21980cd91386a29403c78&language=ar&page=${page}`
     );
     setMovies(res.data.results);
-    setPageCount(res.data.total_pages)
-
+    setPageCount(res.data.total_pages);
   };
 
   useEffect(() => {
@@ -48,7 +48,21 @@ function App() {
     <div div className="font  color-body">
       <NavBar searchInput={searchInput} />
       <Container>
-        <MoviesList movies={movies} getPage={getPage} pageCount={pageCount}  />
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <MoviesList
+                  movies={movies}
+                  getPage={getPage}
+                  pageCount={pageCount}
+                />
+              }
+            />
+            <Route path="/movie/:id" element={<MoviesDetails />} />
+          </Routes>
+        </BrowserRouter>
       </Container>
     </div>
   );
