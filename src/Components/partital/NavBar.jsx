@@ -6,8 +6,6 @@ import {
   getSearchMovies,
 } from "../../redux/actions/movieActions";
 const NavBar = () => {
-
-
   const dispatch = useDispatch();
   const resultSearch = (word) => {
     searchInput(word);

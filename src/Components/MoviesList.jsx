@@ -4,7 +4,7 @@ import PaginationComponent from "./partital/PaginationComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { allDataMovies } from "../redux/actions/movieActions";
-const MoviesList = ({  getPage, pageCount }) => {
+const MoviesList = ({ getPage, pageCount }) => {
   const [movies, setMovies] = useState([]);
 
   const dispatch = useDispatch();
@@ -17,7 +17,6 @@ const MoviesList = ({  getPage, pageCount }) => {
     setMovies(dataMovies);
   }, [dataMovies]);
 
-  
   return (
     <Row className="mt-3">
       {movies.length >= 1 ? (
@@ -27,9 +26,7 @@ const MoviesList = ({  getPage, pageCount }) => {
       ) : (
         <h3 className="text-center"> لا يوجد افلام ...............</h3>
       )}
-      {movies.length >= 1 ? (
-        <PaginationComponent getPage={getPage} pageCount={pageCount} />
-      ) : null}
+      {movies.length >= 1 ? <PaginationComponent /> : null}
     </Row>
   );
 };
