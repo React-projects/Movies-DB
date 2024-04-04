@@ -1,8 +1,24 @@
 import { Container, Col, Row } from "react-bootstrap";
 import logo from "../../images/logo.png";
-const NavBar = ({ searchInput }) => {
-  const resualtSearch = (word) => {
+import { useDispatch } from "react-redux";
+import {
+  allDataMovies,
+  getSearchMovies,
+} from "../../redux/actions/movieActions";
+const NavBar = () => {
+
+
+  const dispatch = useDispatch();
+  const resultSearch = (word) => {
     searchInput(word);
+  };
+
+  const searchInput = async (word) => {
+    if (word === "") {
+      dispatch(allDataMovies());
+    } else {
+      dispatch(getSearchMovies(word));
+    }
   };
 
   return (
@@ -18,7 +34,7 @@ const NavBar = ({ searchInput }) => {
             <div className="search  w-100">
               <i className="fa fa-search"></i>
               <input
-                onChange={(e) => resualtSearch(e.target.value)}
+                onChange={(e) => resultSearch(e.target.value)}
                 type="text"
                 className="form-control"
                 placeholder="ابحث"

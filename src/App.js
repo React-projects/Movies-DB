@@ -9,18 +9,6 @@ import MoviesDetails from "./Components/MoviesDetails";
 function App() {
   const [pageCount, setPageCount] = useState(0);
 
-  // TODO search movies
-  const searchInput = async (word) => {
-    if (word === "") {
-      // getAllMovies();
-    } else {
-      const res = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=a5b028967ab8251416e6ad7347bbe6cf&query=${word}&language=ar`
-      );
-      // setMovies(res.data.results);
-      setPageCount(res.data.total_pages);
-    }
-  };
   // TODO get pages movies
   const getPage = async (page) => {
     const res = await axios.get(
@@ -32,7 +20,7 @@ function App() {
 
   return (
     <div div className="font  color-body">
-      <NavBar searchInput={searchInput} />
+      <NavBar />
       <Container>
         <BrowserRouter>
           <Routes>
